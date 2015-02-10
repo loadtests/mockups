@@ -25,14 +25,14 @@ $('#add-site').on('shown.bs.modal', function () {  });
             </th>
             <td class='text-right'>
                 <a href=''>View result history</a>
-                <button type=button class='btn btn-primary'>Run...</button>
+                <button type=button class='btn btn-primary' data-toggle=modal data-target='#run-script'>Run...</button>
                 <button type=button class='btn btn-sm btn-link'>Delete site</button>
             </td>
         </tr>
     </tbody>
 </table>
 
-<button class='btn btn-success'>Add a site</button>
+<button class='btn btn-success' type=button data-toggle=modal data-target='#add-site'>Add a site</button>
 
 </section>
 
@@ -63,7 +63,7 @@ $('#add-site').on('shown.bs.modal', function () {  });
     </tbody>
 </table>
 
-<button class='btn btn-success'>Create new script</button>
+<button class='btn btn-success' type=button data-toggle=modal data-target='#add-script'>Create new script</button>
 
 </section>
 
@@ -75,14 +75,81 @@ $('#add-site').on('shown.bs.modal', function () {  });
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title" id="myModalLabel">Add new site</h4>
       </div>
       <div class="modal-body">
-        ...
+        <form class='form' role=form>
+            <div class=form-group><label>Host name:</label> <input type=text class=form-control></div>
+        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary">Add</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="add-script" tabindex="-1" role="dialog" aria-labelledby="addScriptLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add new script</h4>
+      </div>
+      <div class="modal-body">
+        <form class='form' role=form>
+            <div class="form-group"><label>Host name:</label> <input type=text class=form-control></div>
+            
+            <div class="form-group"><label>Enter or paste script:</label> <textarea rows=12 class=form-control style='width: 100%;'></textarea></div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Verify and create</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="run-script" tabindex="-1" role="dialog" aria-labelledby="addScriptLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Run load test for example.com</h4>
+      </div>
+      <div class="modal-body">
+        <form class='form' role=form>
+            <div class="form-group">
+                <label>Select script:</label>
+                <select class=form-control>
+                    <option value=''>Pick a script</option>
+                    <option>Place orders</option>
+                    <option>Browse products</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Min number of concurrent workers:</label>
+                <input type=number min=0 class=form-control>
+            </div>
+            <div class="form-group">
+                <label>Max number of concurrent workers:</label>
+                <input type=number min=0 class=form-control>
+            </div>
+            <div class="form-group">
+                <label>Duration (seconds)</label>
+                <input type=number min=0 class=form-control>
+            </div>
+            
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Run</button>
       </div>
     </div>
   </div>
